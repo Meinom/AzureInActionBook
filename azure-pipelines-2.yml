@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+name: Publish docs
+
+jobs:
+- job: run_ps_docs
+  steps:
+  - checkout: self
+  
+  - task: PowerShell@2
+    displayName: 'Generate docs'
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Install the required modules
+        Install-Module -Name PSDocs,PSDocs.Azure -AllowPrerelease -Force -Scope CurrentUser
+        
+        # Run PSDocs (matching the behavior of the GitHub Action)
+        # Note: You may need to adjust the exact PowerShell command 
+        # depending on your specific PSDocs configuration
+        Invoke-PSDocs -InputPath templates/ -OutputPath out/docs/
