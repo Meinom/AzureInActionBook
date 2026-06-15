@@ -17,7 +17,7 @@ jobs:
       targetType: 'inline'
       script: |
         # Install the required modules
-        Install-Module -Name PSDocs,PSDocs.Azure -AllowPrerelease -Force -Scope CurrentUser
+        Install-Module -Name PSDocs,PSDocs.Azure -AllowPrerelease -Force -Scope CurrentUser -SkipPublisherCheck
         
         # Run PSDocs (matching the behavior of the GitHub Action)
         # Note: You may need to adjust the exact PowerShell command 
