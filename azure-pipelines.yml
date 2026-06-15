@@ -24,5 +24,5 @@ jobs:
         # depending on your specific PSDocs configuration
         write-host "start"
         Invoke-PSDocs -InputPath templates/ -OutputPath out/docs/
-        rite-host "eind"
+        write-host "eind"
 
